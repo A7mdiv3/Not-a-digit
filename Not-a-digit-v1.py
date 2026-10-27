@@ -48,4 +48,4 @@ web=gr.Interface(
     inputs=gr.Paint(type="pil", layers=False, canvas_size=(500, 500), brush=gr.Brush(default_size=10, colors=["#000000"], color_mode="fixed")),
     outputs=[gr.Textbox(label="Brain A"), gr.Textbox(label="Brain B")],
 )
-web.launch()
+web.launch(share=True)
