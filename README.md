@@ -1,2 +1,6 @@
 # Not-a-digit
-handwritten digit recognizer that have the ability to say "not a digit". A machine learning project that is trained to reject inputs that it wasn't trained for, using handwritten digits, letters, and clothing images to have the ability to recognize what is Infront of it. 
+Not a Digit is a machine learning project developed in Python using PyTorch. It looks at how two neural networks recognise handwritten digits and how their predictions differ when the input is not a number.
+
+One of the project features is the interactive drawing interface where users can draw something and see how both models interpret the same image.
+
+#How It Works
