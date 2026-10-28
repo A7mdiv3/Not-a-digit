@@ -36,6 +36,18 @@ The application takes the drawing and puts it onto a white background. It then c
 
 This makes the models able to process the user's drawing in a way that is more similar to how they were trained.
 
+# Results
+I tested both brains on pictures they had never seen.
+
+| | Brain A | Brain B |
+|---|---|---|
+| Digits read correctly | 96.8% | 97.0% |
+| Real digits wrongly thrown out | 10.7% | 0.4% |
+| Letters wrongly let through | 46.8% | 0.6% |
+| Clothes wrongly let through | 73.7% | 7.0% |
+
+A lower percentage means better results, except in the first row. "Let through" which means the brain wrongly let thought a letter or a piece of clothing as a digit.
+
 # Built With
 . Python
 
