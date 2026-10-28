@@ -64,7 +64,7 @@ A lower percentage means better results, except in the first row. "Let through" 
 # Running the Project
 Install the required libraries:
 ```python
-pip install -r requirements.txts
+pip install -r requirements.txt
 ```
 
 Start the application by running:
