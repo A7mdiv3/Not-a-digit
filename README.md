@@ -64,7 +64,7 @@ A lower percentage means better results, except in the first row. "Let through" 
 # Running the Project
 Install the required libraries:
 ```python
-pip install torch torchvision gradio numpy pillow
+pip install -r requirements.txts
 ```
 
 Start the application by running:
