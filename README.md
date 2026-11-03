@@ -37,7 +37,7 @@ The application takes the drawing and puts it onto a white background. It then c
 This makes the models able to process the user's drawing in a way that is more similar to how they were trained.
 
 # Results
-I tested both brains on pictures they had never seen.
+I tested both brains on pictures they had never seen: handwritten digits (MNIST), handwritten letters (EMNIST) and pictures of clothes (Fashion-MNIST). Letters and clothes are not digits, so a good brain should reject them.
 
 | | Brain A | Brain B |
 |---|---|---|
@@ -46,33 +46,83 @@ I tested both brains on pictures they had never seen.
 | Letters wrongly let through | 46.8% | 0.6% |
 | Clothes wrongly let through | 73.7% | 7.0% |
 
-A lower percentage means better results, except in the first row. "Let through" which means the brain wrongly let thought a letter or a piece of clothing as a digit.
+A lower percentage means better results, except in the first row. "Let through" means the brain wrongly accepted a letter or a piece of clothing as a digit. Brain A rejects a picture when it is less than 90% sure. Brain B has an extra answer, "not a digit".
 
 # Built With
-. Python
-
-. PyTorch
-
-. Torchvision
-
-. NumPy
-
-. Pillow
-
-. Gradio
+- Python
+- PyTorch
+- Torchvision
+- NumPy
+- Pillow
+- Gradio
 
 # Running the Project
-Install the required libraries:
-```python
+Follow these steps in order. You need **Python 3.9 or newer**. Check with `python --version`.
+
+### 1. Download the project
+```
+git clone https://github.com/A7mdiv3/Not-a-digit.git
+cd Not-a-digit
+```
+No git? On the GitHub page, click **Code > Download ZIP**, unzip it, and open the folder in a terminal.
+
+### 2. Make a virtual environment (keeps things clean)
+**Windows**
+```
+python -m venv venv
+venv\Scripts\activate
+```
+**Mac / Linux**
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install what the project needs
+```
 pip install -r requirements.txt
 ```
 
-Start the application by running:
-```python
+### 4. Train the two brains (do this once)
+```
+python train_A.py
+python train_B.py
+```
+- `train_A.py` trains **Brain A** (digits only) and saves it as `baseline`.
+- `train_B.py` trains **Brain B** (digits + letters, with a "not a digit" answer) and saves it as `baseline_B`.
+- The first run downloads the datasets into a folder called `data`. This needs internet and takes a few minutes.
+
+Already have the files `baseline` and `baseline_B` in the folder? Skip this step.
+
+### 5. (Optional) Test both brains
+```
+python test.py
+```
+This prints how often each brain is right or wrong on digits, letters, and clothing pictures.
+
+### 6. Start the drawing app
+```
 python Not-a-digit-v1.py
 ```
+Open the link shown in the terminal (usually `http://127.0.0.1:7860`). Draw a digit, a letter, or any shape. Both brains will say what they think.
+
+### Problems?
+| Problem | Fix |
+|---|---|
+| `No such file or directory: 'baseline'` | You have not trained yet. Do step 4. |
+| `ModuleNotFoundError` | The environment is not active, or step 3 was skipped. Do steps 2 and 3 again. |
+| `pip` is not found | Try `python -m pip install -r requirements.txt` |
+| The drawing box does not work or shows an image error | Update Gradio: `pip install --upgrade gradio` |
+| Size mismatch when loading a brain | `baseline` and `baseline_B` were mixed up. Train again with step 4. |
+
+> Note: the app starts with a public share link (`share=True`). Anyone with the link can use it while it runs.
+
 # Limitations
 As Brain B was trained on handwritten letters it cannot be assumed to understand all shapes/symbols as being non digits. Both models will have errors when they are presented with unusual handwriting/graphics.
 
 Overall, the aim of this project was to examine how different methods of classifying images of handwritten data can be used and how the training data can affect a model's predictions.
 
+# What I Learned
+- An AI model can be confidently wrong. A model that only has 10 answers must pick one of them, even for a letter or a piece of clothing.
+- Giving the model a "not a digit" answer fixed most of this: clothes let through dropped from 73.7% to 7.0%, and letters from 46.8% to 0.6%.
+- Testing on pictures the model has never seen shows problems that normal training results hide.
