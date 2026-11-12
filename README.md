@@ -63,24 +63,34 @@ A lower percentage means better results, except in the first row. "Let through" 
 
 ## How to run it
 
-You need Python 3.9 or newer.
+You need Python installed (get it from python.org).
 
-1. Download the repo (green Code button → Download ZIP, or `git clone https://github.com/A7mdiv3/Not-a-digit`) and open a terminal in that folder.
+**1. Download the project**
+Click the green **Code** button → **Download ZIP**. Right-click the ZIP and choose **Extract All**.
 
-2. Install the libraries:
+**2. Open a terminal inside the project folder**
+Open the extracted folder until you can see `Not-a-digit-v1.py`. Then do one of these:
 
-       pip install torch torchvision gradio numpy pillow
+- Click the address bar at the top of the window, type `cmd` and press Enter. The terminal opens in the right place.
+- Or open a terminal yourself and move into the folder with `cd`. For example, if it's in Downloads:
 
-   torch is a big download, so this can take a few minutes.
+      cd Downloads\Not-a-digit-main
 
-3. Start the app:
+  Type `dir` to check. You should see `Not-a-digit-v1.py` in the list. If you only see another folder, `cd` into that one too.
 
-       python Not-a-digit-v1.py
+**3. Install the libraries**
 
-4. It prints a link like `http://127.0.0.1:7860`. Open it in your browser, draw something, and you'll see what both models think it is.
+    pip install torch torchvision gradio numpy pillow
 
-If `pip` isn't found, try `python -m pip install ...` or `pip3`.
-If you want to train the models yourself, run `train_A.py` and `train_B.py` first. Otherwise you don't need them.
+torch is big, so this can take a few minutes.
+
+**4. Start the app**
+
+    python Not-a-digit-v1.py
+
+**5. Open the link**
+The terminal prints a link like `http://127.0.0.1:7860`. Open it in your browser, draw a number, a letter or a shape, and see what both models say.
+
 # Limitations
 As Brain B was trained on handwritten letters it cannot be assumed to understand all shapes/symbols as being non digits. Both models will have errors when they are presented with unusual handwriting/graphics.
 
