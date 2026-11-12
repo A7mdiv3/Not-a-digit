@@ -61,16 +61,26 @@ A lower percentage means better results, except in the first row. "Let through" 
 
 . Gradio
 
-# Running the Project
-Install the required libraries:
-```python
-pip install -r requirements.txt
-```
+## How to run it
 
-Start the application by running:
-```python
-python Not-a-digit-v1.py
-```
+You need Python 3.9 or newer.
+
+1. Download the repo (green Code button → Download ZIP, or `git clone https://github.com/A7mdiv3/Not-a-digit`) and open a terminal in that folder.
+
+2. Install the libraries:
+
+       pip install torch torchvision gradio numpy pillow
+
+   torch is a big download, so this can take a few minutes.
+
+3. Start the app:
+
+       python Not-a-digit-v1.py
+
+4. It prints a link like `http://127.0.0.1:7860`. Open it in your browser, draw something, and you'll see what both models think it is.
+
+If `pip` isn't found, try `python -m pip install ...` or `pip3`.
+If you want to train the models yourself, run `train_A.py` and `train_B.py` first. Otherwise you don't need them.
 # Limitations
 As Brain B was trained on handwritten letters it cannot be assumed to understand all shapes/symbols as being non digits. Both models will have errors when they are presented with unusual handwriting/graphics.
 
